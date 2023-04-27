@@ -5,7 +5,8 @@ using System;
 var builder = WebApplication.CreateBuilder(args);
 
 //Register Syncfusion license
-Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("YOUR LICENSE KEY");
+var key = builder.Configuration.GetSection("key").Value;
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(key);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
