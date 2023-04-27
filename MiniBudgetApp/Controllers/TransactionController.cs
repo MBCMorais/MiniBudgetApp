@@ -44,18 +44,29 @@ namespace MiniBudgetApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(transaction.TransactionId == Guid.Empty)
+                //if (transaction.CategoryId == Guid.Empty)
+                //{
+                //    TempData["MyErrorMessage"] = "Please select a category.";
+                //    PopulateCategories();
+                //    return View(transaction);
+                //}
+                if (transaction.TransactionId == Guid.Empty)
                 {
+                    
                     _context.Add(transaction);
                 }
                 else
                 {
                     _context.Update(transaction);
                 }
+
+                
                 
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            
+           
             PopulateCategories();
             return View(transaction);
         }
@@ -77,6 +88,36 @@ namespace MiniBudgetApp.Controllers
             return View(transaction);
         }
 
+        // POST: Transaction/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Guid id, [Bind("TransactionId,Amount,Note,Date,CategoryId")] Transaction transaction)
+        {
+            if (id != transaction.TransactionId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(transaction);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+
+
+                    throw;
+
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(transaction);
+        }
 
         // POST: Transaction/Delete/5
         [HttpPost, ActionName("Delete")]
