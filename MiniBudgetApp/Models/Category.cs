@@ -16,5 +16,14 @@ namespace MiniBudgetApp.Models
 
         [Column(TypeName = "nvarchar(10)")]
         public string Type { get; set; } = "Expense";
+
+        [NotMapped] 
+        public string TitlewithIcon {
+            get
+            {
+                return this.Icon + " " + this.Name;
+            } 
+        }
+
     }
 }
