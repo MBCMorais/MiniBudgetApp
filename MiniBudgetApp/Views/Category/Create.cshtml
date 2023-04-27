@@ -8,7 +8,6 @@
     <div class="col-md-7">
         <div class="widget p-5">
 
-       
             <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
          
@@ -20,21 +19,22 @@
 
                 </div>
            
-            <div class="mb-3">
-                <ejs-textbox id="name" placeholder="Name" ejs-for="Name" floatLabelType="Always"></ejs-textbox>
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <ejs-textbox id="icon" placeholder="Icon" ejs-for="Icon" floatLabelType="Always"></ejs-textbox>
-                <span asp-validation-for="Icon" class="text-danger"></span>
-            </div>
+                <div class="mb-3">
+                    <ejs-textbox id="name" placeholder="Name" ejs-for="Name" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <ejs-textbox id="icon" placeholder="Icon" ejs-for="Icon" floatLabelType="Always"></ejs-textbox>
+                    <span asp-validation-for="Icon" class="text-danger"></span>
+                </div>
             
           
-            <div class="mb-3">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
+                <div class="mb-3">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+                
             
-        </form>
+            </form>
         </div>
     </div>
     <div class="col-md-5">
