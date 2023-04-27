@@ -3,9 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - MiniBudgetApp</title>
+    <title>MiniBudgetApp</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#00ffff">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/21.1.35/bootstrap5-dark.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MiniBudgetApp.styles.css" asp-append-version="true" />
     <script src="https://cdn.syncfusion.com/ej2/21.1.35/dist/ej2.min.js"></script>
@@ -28,15 +36,44 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Category" asp-action="Index">Category</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="container mt-5">
+       <div class="row justify-content-center">
+           <div class="col-md-10">
+       
+                <main role="main" class="pb-3">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="d-flex flex-column mb-5">
+                                <div class="d-flex mb-1">
+                                    <div class="flex-grow-1">
+                                        <h3 class="fw-bold">@ViewData["PageTitle"]</h3>
+                                    </div>
+                                    <div>
+                                        @if (ViewData["PageActionText"] != null)
+                                        {
+                                            <a class="btn btn-success text-light" href="@ViewData["PageActionUrl"]">
+                                                @ViewData["PageActionText"]
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+                                <ejs-breadcrumb id="breadcrumb" separatorTemplate="@Html.Raw("<span class='fa-solid fa-angle-right'></span>")"></ejs-breadcrumb>
+                                @*breadcrumb*@
+                            </div>
+                        </div>
+                    </div>
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
     </div>
 
     <footer class="border-top footer text-muted">
